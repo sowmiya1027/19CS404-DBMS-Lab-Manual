@@ -28,23 +28,23 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 
 | Entity | Attributes (PK, FK) | Notes |
 |--------|--------------------|-------|
-|Member	 |MemberID (PK), Name, MembershipType, StartDate, PhoneNumber, Email	|Stores member information.
+|Member	 |MemberID (PK), Name, MembershipType,Age, PhoneNumber	|Stores member information.
 |Program |ProgramID (PK), ProgramName, Duration, Schedule	|Stores fitness program details.
-|Trainer |TrainerID (PK), TrainerName, Specialization, PhoneNumber, Experience	|Stores trainer information.
+|Trainer |TrainerID (PK), TrainerName, Specialization, PhoneNumber	|Stores trainer information.
 |Personal_Session|	SessionID (PK), SessionDate, SessionTime	|Stores personal training session details.
 |Attendance|	AttendanceID (PK), AttendanceDate, Status	|Stores attendance for each personal session.
-|Payment	|PaymentID (PK), PaymentDate, Amount, PaymentMethod	|Stores membership and session payment details.
+|Payment	|PaymentID (PK), PaymentDate, Amount, PaymentType	|Stores session payment details.
 
 ### Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
 |--------------|------------|---------------|-------|
-|Member RegistersJoins Program|	M : N |Tota|l	A member can join multiple programs, and each program can have multiple members.
-|Trainer AssignedTo Program|	M : N	|Total|	A trainer can teach multiple programs, and a program can have multiple trainers.
-|Member Books PersonalSession|	1 : M	|Partial|	A member may book multiple personal training sessions.
-|Trainer Conducts PersonalSession|	1 : M	|Total|	A trainer can conduct many personal training sessions.
-|PersonalSession Has Attendance|	1 : M	|Total|	Each session has attendance records.
-|Member Makes Payment|	1 : M	|Total|	A member can make multiple payments for memberships and personal training sessions.
+|Member — Joins — Program|	M : N|	Member (mandatory), Program (mandatory)	|A member can join multiple programs, and each program can have multiple members.
+|Program — Assigned To — Trainer|	M : N|	Program (mandatory), Trainer (mandatory)	|A program can have multiple trainers, and a trainer can be assigned to multiple programs.
+|Trainer — Conducts — Personal Session|	1 : M|	Trainer (mandatory), Personal Session (mandatory)|	Each personal training session is conducted by one trainer, and a trainer can conduct many sessions.
+|Member — Books — Personal Session|	1 : M|	Member (optional), Personal Session (mandatory)|	A member may book multiple personal training sessions, and each session is booked by one member.
+|Personal Session — Has — Attendance|	1 : M|	Personal Session (mandatory), Attendance (mandatory)|	Each personal training session has one or more attendance records.
+|Member — Makes — Payment|	1 : M|	Member (mandatory), Payment (mandatory)|	A member can make multiple payments for memberships and personal training sessions, and each payment belongs to one member.
 ### Assumptions
 - Each member, trainer, program, session, attendance, and payment has a unique ID.
 - A member can join multiple fitness programs.
@@ -69,31 +69,38 @@ The Central Library wants to manage book lending and cultural events.
 - Overdue fines apply for late returns.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
+<img width="1342" height="972" alt="City Library Event   Book Lending System drawio" src="https://github.com/user-attachments/assets/cb27f277-2052-4dfa-9981-e43a4ce8c88f" />
 
 ### Entities and Attributes
 
 | Entity | Attributes (PK, FK) | Notes |
 |--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+|Member|	MemberId(PK),	MemberName, Address, PhoneNo	|Stores library member details.
+|Book	|BookId(PK),	Title, Author, Category	|Stores information about books available in the library.
+|Loan|	LoanId(PK),	LoanDate, BookID, MemberID	|Stores loan information.
+|Event|	EventId(PK),	EventName, EventDate	|Stores information about library events.
+|Speaker|	SpeakerId(PK),	Name, Expertise	|Stores details of speakers or authors participating in events.
+|Room|	RoomId(PK),	RoomName, Capacity	|Stores details of rooms used for events and study.
+|Fine	|FineId(PK),	Amount, FineDate	|Stores overdue fine details for late book returns.
 
 ### Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
 |--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+|Member — Borrows — Loan|	1 : M|	Member (mandatory), Loan (mandatory)	|A member can borrow multiple books over time, resulting in multiple loan records. Each loan belongs to one member.
+|Loan — Includes — Book|	M : 1|	Loan (mandatory), Book (mandatory)	|Each loan record is for one book, while a book can appear in multiple loan records over time.
+|Loan — Generates — Fine	|1 : 1|	Loan (optional), Fine (mandatory)	|A loan generates one fine only if the book is returned after the due date.
+|Member — Registers — Event|	M : N|	Member (optional), Event (mandatory)	|Members can register for multiple events, and each event can have many registered members.
+|Event — Has — Speaker	|1 : M|	Event (mandatory), Speaker (mandatory)	|Each event has one or more speakers, and each speaker is associated with one event.
+|Room — Booked In — Event	|1 : M|	Room (optional), Event (mandatory)	|One room can be booked for multiple events at different times, but each event is held in one room.
 
 ### Assumptions
-- 
-- 
-- 
+- Each member, book, loan, event, speaker, room, and fine has a unique ID.
+- A member can borrow multiple books through different loan records.
+- A fine is generated only for overdue loans.
+- Each event is conducted in one room.
+- A room can host multiple events at different times.
+- Members can register for multiple events. 
 
 ---
 
