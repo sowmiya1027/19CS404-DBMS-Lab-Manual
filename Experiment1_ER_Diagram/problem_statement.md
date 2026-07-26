@@ -118,31 +118,41 @@ A popular restaurant wants to manage reservations, orders, and billing.
 - Waiters assigned to serve reservations.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
+<img width="1262" height="982" alt="Restaurant Table Reservation   Ordering drawio (1)" src="https://github.com/user-attachments/assets/e89e7089-5a62-449a-bc09-ba3050d5a1fd" />
+
+
 
 ### Entities and Attributes
 
 | Entity | Attributes (PK, FK) | Notes |
 |--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+|Customer|	CustomerId (PK), CustomerName, PhoneNo	|Stores customer details.
+|Reservation|	ReservationId (PK), ReservationDate, ReservationTime, NumberOfGuests	|Stores reservation details.
+|Table|	TableNumber(PK), Capacity	|Stores restaurant table information.
+|Order|	OrderId (PK), OrderDate, OrderTime	|Stores food order details.
+|Dish|	DishId (PK), DishName, Price	|Stores menu items.
+|Category|	CategoryId (PK), CategoryName	|Stores dish categories (Starter, Main Course, Dessert).
+|Waiter|	WaiterId (PK), WaiterName, Phone	|Stores waiter details.
+|Bill|	BillId (PK), FoodCharge, ServiceCharge, TotalAmount	|Stores billing information.
 
 ### Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
 |--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
-
+|Customer — Makes — Reservation|	1 : M|	Customer (optional), Reservation (mandatory)	|A customer can make multiple reservations, and each reservation belongs to one customer.
+|Reservation — Reserved For — Table|	M : 1|	Reservation (mandatory), Table (optional)|	Each reservation is assigned to one table, while a table can have multiple reservations over time.
+|Reservation — Assigned To — Waiter|	M : 1|	Reservation (mandatory), Waiter (mandatory)	|Each reservation is served by one waiter, and a waiter can serve multiple reservations.
+|Reservation — Has — Order|	1 : M|	Reservation (mandatory), Order (mandatory)	|A reservation can include multiple food orders, and each order belongs to one reservation.
+|Order — Contains — Dish|	M : N|	Order (mandatory), Dish (mandatory)	|An order can contain multiple dishes, and a dish can appear in multiple orders.
+|Dish — Belongs To — Category|	M : 1|	Dish (mandatory), Category (mandatory)	|Each dish belongs to one category, while a category contains multiple dishes.
+|Reservation — Generates — Bill|	1 : 1|	Reservation (mandatory), Bill (mandatory)|	Each completed reservation generates one bill including food and service charges.
 ### Assumptions
-- 
-- 
-- 
+- Every customer, reservation, table, order, dish, category, waiter, and bill has a unique ID.
+- Walk-in customers are treated as reservations created at the time of arrival.
+- Each reservation is assigned to one table and one waiter.
+- A reservation can have multiple food orders.
+- Each dish belongs to only one category.
+- One bill is generated for each completed reservation. 
 
 ---
 
