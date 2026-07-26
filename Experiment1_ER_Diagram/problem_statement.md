@@ -22,31 +22,35 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 - Payments tracked for memberships and sessions.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
+<img width="942" height="1302" alt="City Fitness Club Management drawio" src="https://github.com/user-attachments/assets/f0c278f5-f76d-486b-b172-ef6cb8947adb" />
 
 ### Entities and Attributes
-
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+Entities and Attributes
+Entity	Attributes (PK, FK)	Notes
+MEMBER	MemberID (PK), Name, MembershipType, StartDate, PhoneNumber, Email	Stores member information.
+PROGRAM	ProgramID (PK), ProgramName, Duration, Schedule	Stores fitness program details.
+TRAINER	TrainerID (PK), TrainerName, Specialization, PhoneNumber, Experience	Stores trainer information.
+PERSONAL_SESSION	SessionID (PK), SessionDate, SessionTime	Stores personal training session details.
+ATTENDANCE	AttendanceID (PK), AttendanceDate, Status	Stores attendance for each personal session.
+PAYMENT	PaymentID (PK), PaymentDate, Amount, PaymentMethod	Stores membership and session payment details.
 
 ### Relationships and Constraints
 
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+Relationship	Cardinality	Participation	Notes
+MEMBER Registers/Joins PROGRAM	M : N	Total	A member can join multiple programs, and each program can have multiple members.
+TRAINER Assigned To PROGRAM	M : N	Total	A trainer can teach multiple programs, and a program can have multiple trainers.
+MEMBER Books PERSONAL_SESSION	1 : M	Partial	A member may book multiple personal training sessions.
+TRAINER Conducts PERSONAL_SESSION	1 : M	Total	A trainer can conduct many personal training sessions.
+PERSONAL_SESSION Has ATTENDANCE	1 : M	Total	Each session has attendance records.
+MEMBER Makes PAYMENT	1 : M	Total	A member can make multiple payments for memberships and personal sessions.
 
 ### Assumptions
-- 
-- 
-- 
+- Each member, trainer, program, session, attendance, and payment has a unique ID.
+- A member can join multiple fitness programs.
+- A trainer can be assigned to multiple programs.
+- A member can book multiple personal training sessions.
+- Attendance is recorded for every personal training session.
+- A member can make multiple payments for memberships and training sessions.
 
 ---
 
