@@ -74,7 +74,7 @@ WHERE city='New York' or grade>200;
 
 
 **Question 3**
-<img width="854" height="352" alt="image" src="https://github.com/user-attachments/assets/4ee3d572-b8cb-4034-ab20-dc5bd1419a0f" />
+<img width="960" height="335" alt="image" src="https://github.com/user-attachments/assets/2b240957-8654-4845-a045-5e3d77ce4751" />
 
 ```
 UPDATE PRODUCTS
@@ -88,7 +88,7 @@ WHERE supplier_id=6;
 
 
 **Question 4**
-<img width="784" height="395" alt="image" src="https://github.com/user-attachments/assets/9926748c-be0d-4fb2-af5d-4823c3be0c49" />
+<img width="1225" height="374" alt="image" src="https://github.com/user-attachments/assets/0c39afb8-de5b-4932-9fc4-978b41f837fc" />
 
 ```
 UPDATE Employees
@@ -145,7 +145,7 @@ WHERE department_id=110;
 
 
 **Question 8**
-<img width="686" height="184" alt="image" src="https://github.com/user-attachments/assets/0fd6d683-275b-4e53-8515-646cdeffc399" />
+<img width="994" height="226" alt="image" src="https://github.com/user-attachments/assets/611cd9ba-0bf8-4d24-8978-d3601c09d625" />
 
 ```
 SELECT dname || ', ' || loc AS dept_location
@@ -158,7 +158,7 @@ FROM dept;
 
 
 **Question 9**
-<img width="881" height="273" alt="image" src="https://github.com/user-attachments/assets/3195dce8-bf69-44a1-a3ed-af67db0f25d7" />
+<img width="1143" height="322" alt="image" src="https://github.com/user-attachments/assets/8998fee3-463c-44ab-9fe9-e104592e79f8" />
 
 ```
 UPDATE products
@@ -172,7 +172,7 @@ WHERE product_name LIKE '%Detergent%';
 
 
 **Question 10**
-<img width="614" height="238" alt="image" src="https://github.com/user-attachments/assets/68fd5eab-2051-4c05-ab46-aa9356495eaa" />
+<img width="952" height="289" alt="image" src="https://github.com/user-attachments/assets/110d35f9-9380-4776-b22d-a4201e96c3f3" />
 
 ```
 SELECT ename,strftime('%d-%m-%Y',hiredate) AS HireDateFormatted
