@@ -104,124 +104,208 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+```
+Insert the following products into the Products table:
 
-```sql
--- Paste your SQL code below for Question 1
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
+```
+
+```
+INSERT INTO Products(Name,Category,Price,Stock)
+VALUES('Smartphone','Electronics',800,150),
+('Headphones','Accessories',200,300);
 ```
 
 **Output:**
+<img width="1236" height="432" alt="image" src="https://github.com/user-attachments/assets/9788117c-a639-4013-8d5a-f30f1e81bc24" />
 
-![Output1](output.png)
+
 
 **Question 2**
----
--- Paste Question 2 here
+Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
-```sql
--- Paste your SQL code below for Question 2
+```
+CREATE TABLE Orders
+(
+OrderID INTEGER PRIMARY KEY,
+OrderDate DATE NOT NULL,
+CustomerID INTEGER,
+FOREIGN KEY (CustomerID)
+REFERENCES Customers(CustomerID)
+);
 ```
 
 **Output:**
+<img width="1240" height="376" alt="image" src="https://github.com/user-attachments/assets/2b9636a7-4b3f-427a-a537-f0aeabac71f4" />
 
-![Output2](output.png)
+
 
 **Question 3**
----
--- Paste Question 3 here
+Insert all customers from Old_customers into Customers
+Table attributes are CustomerID, Name, Address, Email
 
-```sql
--- Paste your SQL code below for Question 3
+```
+INSERT INTO Customers(CustomerID,Name,Address,Email)
+SELECT CustomerID,Name,Address,Email FROM Old_customers;
 ```
 
 **Output:**
+<img width="1237" height="366" alt="image" src="https://github.com/user-attachments/assets/9061b282-9ccb-41d5-92d3-2afc6e845c99" />
 
-![Output3](output.png)
+
 
 **Question 4**
----
--- Paste Question 4 here
+```
+In the Employee table, insert a record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as NULL.
 
-```sql
--- Paste your SQL code below for Question 4
+EmployeeID  Name          Position    Department  Salary
+----------  ------------  ----------  ----------  ----------
+5           George Clark  Consultant
+7           Noah Davis    Manager     HR          60000
+8           Ava Miller    Consultant  IT
+```
+
+```
+INSERT INTO Employee(EmployeeID,Name,Position,Department,Salary)
+VALUES
+(5,'George Clark','Consultant',NULL,NULL),
+(7,'Noah Davis','Manager','HR',60000),
+(8,'Ava Miller','Consultant','IT',NULL);
 ```
 
 **Output:**
+<img width="1233" height="378" alt="image" src="https://github.com/user-attachments/assets/83e59575-6bfe-4f59-8344-5655332db558" />
 
-![Output4](output.png)
+
 
 **Question 5**
----
--- Paste Question 5 here
+Write an SQL query to change the name of the column id to employee_id in the table employee.
 
-```sql
--- Paste your SQL code below for Question 5
+```
+ALTER TABLE employee RENAME id TO employee_id;
 ```
 
 **Output:**
+<img width="1227" height="331" alt="image" src="https://github.com/user-attachments/assets/c8c013da-e692-4eb3-a7c0-3dd1d2a09aae" />
 
-![Output5](output.png)
+
 
 **Question 6**
----
--- Paste Question 6 here
+Create a table named Reviews with the following columns:
 
-```sql
--- Paste your SQL code below for Question 6
+ReviewID as INTEGER
+ProductID as INTEGER
+Rating as REAL
+ReviewText as TEXT
+
+```
+CREATE TABLE Reviews
+(
+ReviewID INTEGER,
+ProductID INTEGER,
+Rating REAL,
+ReviewText TEXT
+);
 ```
 
 **Output:**
+<img width="1235" height="489" alt="image" src="https://github.com/user-attachments/assets/1c381f06-18c5-4252-855e-c5bf9e403248" />
 
-![Output6](output.png)
+
 
 **Question 7**
----
--- Paste Question 7 here
+Create a table named Members with the following columns:
 
-```sql
--- Paste your SQL code below for Question 7
+MemberID as INTEGER
+MemberName as TEXT
+JoinDate as DATE
+
+```
+CREATE TABLE Members
+(
+MemberID INTEGER,
+MemberName TEXT,
+JoinDate DATE
+);
 ```
 
 **Output:**
+<img width="1235" height="459" alt="image" src="https://github.com/user-attachments/assets/19de0ef0-2353-4222-85b2-4f70fe7893ad" />
 
-![Output7](output.png)
+
 
 **Question 8**
----
--- Paste Question 8 here
+Create a table named Invoices with the following constraints:
 
-```sql
--- Paste your SQL code below for Question 8
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0.
+
+```
+CREATE Table Invoices
+(
+InvoiceID INTEGER PRIMARY KEY,
+InvoiceDate DATE,
+DueDate DATE,
+Amount REAL,
+CHECK (DueDate > InvoiceDate),
+CHECK (Amount > 0)
+);
 ```
 
 **Output:**
+<img width="1231" height="379" alt="image" src="https://github.com/user-attachments/assets/46db5e46-71c1-4ec0-80b7-9721da0257a7" />
 
-![Output8](output.png)
+
 
 **Question 9**
----
--- Paste Question 9 here
+Create a table named Bonuses with the following constraints:
+BonusID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+BonusAmount as REAL should be greater than 0.
+BonusDate as DATE.
+Reason as TEXT should not be NULL.
 
-```sql
--- Paste your SQL code below for Question 9
+```
+CREATE table Bonuses
+(
+BonusID INTEGER PRIMARY KEY,
+EmployeeID INTEGER,
+BonusAmount REAL,
+BonusDate DATE,
+Reason TEXT NOT NULL,
+Foreign key (EmployeeID)
+REFERENCES Employees(EmployeeID),
+CHECK(BonusAmount > 0)
+);
 ```
 
 **Output:**
+<img width="1238" height="367" alt="image" src="https://github.com/user-attachments/assets/f06ecfc6-7540-4b23-94f9-2c0820b4a8a3" />
 
-![Output9](output.png)
+
 
 **Question 10**
----
--- Paste Question 10 here
+Write a SQL Query  to add attribute ISBN as varchar(30) and domain_dept as varchar(30) in the table 'books'
 
-```sql
--- Paste your SQL code below for Question 10
+```
+ALTER TABLE books ADD COLUMN ISBN varchar(30);
+ALTER TABLE books ADD COLUMN domain_dept varchar(30);
 ```
 
 **Output:**
+<img width="1244" height="467" alt="image" src="https://github.com/user-attachments/assets/8582a100-d439-470c-8aac-737b25e3323a" />
 
-![Output10](output.png)
+
+
+<img width="1859" height="912" alt="image" src="https://github.com/user-attachments/assets/2d76f51f-d779-43c6-9f10-361ce1cb7ea0" />
 
 
 ## RESULT
