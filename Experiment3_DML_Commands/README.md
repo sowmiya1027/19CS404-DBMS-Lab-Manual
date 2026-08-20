@@ -307,7 +307,8 @@ From emp;
 ```
 
 **Output:**
-<img width="640" height="360" alt="image" src="https://github.com/user-attachments/assets/e12e2878-2e0a-4393-bd61-44c143e96a18" />
+<img width="1030" height="432" alt="image" src="https://github.com/user-attachments/assets/48c7382e-bbbd-4078-b101-c37323ba808c" />
+
 
 
 <img width="1894" height="882" alt="image" src="https://github.com/user-attachments/assets/3a0c015e-ffa5-4a4f-99fe-a17c57119154" />
