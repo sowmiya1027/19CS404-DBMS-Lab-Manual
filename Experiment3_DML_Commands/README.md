@@ -47,7 +47,16 @@ SELECT column1, column2 FROM table_name WHERE condition;
 ```
 
 **Question 1**
-<img width="1095" height="294" alt="image" src="https://github.com/user-attachments/assets/cf2afffe-16d1-4ef5-a7de-d70cdb0c3147" />
+```
+Write a SQL query to calculate the original price using the discount percentage and the given discounted price. Return product_id, discounted_price, discount_percentage, and original_price.
+Sample table: Products
+
+product_id | discounted_price | discount_percentage
+ ------------+------------------+---------------------
+ 101 | 45.00 | 0.10 
+102 | 63.75 | 0.15 
+103 | 80.00 | 0.20
+```
 
 ```
 SELECT product_id,discounted_price,discount_percentage,ROUND(discounted_price / (1-discount_percentage),2)AS original_price
@@ -60,7 +69,17 @@ FROM Products;
 
 
 **Question 2**
-<img width="1137" height="247" alt="image" src="https://github.com/user-attachments/assets/125bceda-9fa0-4fb5-926b-13586a5f18b5" />
+```
+Write a SQL query to find customers who are either from the city 'New York' or who have a grade greater than 200. Return customer_id, cust_name, city, grade, and salesman_id.
+
+Sample table: customer
+
+ customer_id |   cust_name    |    city    | grade | salesman_id 
+-------------+----------------+------------+-------+-------------
+        3002 | Nick Rimando   | New York   |   100 |        5001
+        3007 | Brad Davis     | New York   |   200 |        5001
+        3005 | Graham Zusi    | California |   200 |        5002
+```
 
 ```
 SELECT customer_id,cust_name,city,grade,salesman_id
@@ -74,7 +93,22 @@ WHERE city='New York' or grade>200;
 
 
 **Question 3**
-<img width="960" height="335" alt="image" src="https://github.com/user-attachments/assets/2b240957-8654-4845-a045-5e3d77ce4751" />
+```
+Update the 'Selling_Price' to add 10% extra margin for all products supplied by the supplier with id 6.
+
+PRODUCTS TABLE
+
+name               type
+-----------------  ---------------
+product_id         INT
+product_name       VARCHAR(100)
+category           VARCHAR(50)
+cost_price         DECIMAL(10,2)
+sell_price         DECIMAL(10,2)
+reorder_lvl        INT
+quantity           INT
+supplier_id        INT
+```
 
 ```
 UPDATE PRODUCTS
@@ -88,7 +122,24 @@ WHERE supplier_id=6;
 
 
 **Question 4**
-<img width="1225" height="374" alt="image" src="https://github.com/user-attachments/assets/0c39afb8-de5b-4932-9fc4-978b41f837fc" />
+```
+Write a SQL statement to Update the hire_date of employees in department 50 to 2024-01-24.
+
+Employees table
+
+---------------
+employee_id
+first_name
+last_name
+email
+phone_number
+hire_date
+job_id
+salary
+commission_pct
+manager_id
+department_id
+```
 
 ```
 UPDATE Employees
@@ -102,7 +153,18 @@ WHERE department_id=50;
 
 
 **Question 5**
-<img width="1219" height="223" alt="image" src="https://github.com/user-attachments/assets/63d47567-ad98-4de7-bf65-1913862ac599" />
+```
+Write a SQL query to Delete customers from 'customer' table where 'GRADE' is not equal to 3.
+ 
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
+```
 
 ```
 DELETE FROM customer
@@ -115,7 +177,17 @@ WHERE GRADE!=3;
 
 
 **Question 6**
-<img width="1257" height="315" alt="image" src="https://github.com/user-attachments/assets/4f810a75-0414-4ab0-b8a2-c23d56ddb0b9" />
+```
+write a SQL query to identify customers who do not belong to the city of 'New York' or have a grade value that exceeds 100. Return customer_id, cust_name, city, grade, and salesman_id.
+
+Sample table: customer
+
+ customer_id |   cust_name    |    city    | grade | salesman_id 
+-------------+----------------+------------+-------+-------------
+        3002 | Nick Rimando   | New York   |   100 |        5001
+        3007 | Brad Davis     | New York   |   200 |        5001
+        3005 | Graham Zusi    | California |   200 |        5002
+```
 
 ```
 SELECT customer_id,cust_name,city,grade,salesman_id
@@ -129,7 +201,24 @@ WHERE city!='New York' AND grade=100;
 
 
 **Question 7**
-<img width="1149" height="330" alt="image" src="https://github.com/user-attachments/assets/af735cfb-d17e-47ad-9f25-514b4b1427d5" />
+```
+Write a SQL statement to change the EMAIL and COMMISSION_PCT column of the following EMPLOYEES table with 'not available' and 0.55 for those employees whose DEPARTMENT_ID is 110.
+
+Employees table
+
+---------------
+employee_id
+first_name
+last_name
+email
+phone_number
+hire_date
+job_id
+salary
+commission_pct
+manager_id
+department_id
+```
 
 ```
 UPDATE Employees
@@ -145,7 +234,17 @@ WHERE department_id=110;
 
 
 **Question 8**
-<img width="994" height="226" alt="image" src="https://github.com/user-attachments/assets/611cd9ba-0bf8-4d24-8978-d3601c09d625" />
+```
+Write a SQL query to Retrieve the department name and location concatenated with a comma
+
+Table name: dept
+ 
+name        type
+----------  ----------
+deptno       INT
+dname       VARCHAR(100)
+loc         VARCHAR(100)
+```
 
 ```
 SELECT dname || ', ' || loc AS dept_location
@@ -158,7 +257,22 @@ FROM dept;
 
 
 **Question 9**
-<img width="1143" height="322" alt="image" src="https://github.com/user-attachments/assets/8998fee3-463c-44ab-9fe9-e104592e79f8" />
+```
+Write a SQL statement to Change the category to 'Household' where product name contains 'Detergent' in the products table.
+
+Products Table 
+
+name          type       
+----------    ---------- 
+product_id     INT PRIMARY KEY        
+product_name   VARCHAR(10) 
+category       VARCHAR(50) 
+cost_price     DECIMAL(10) 
+sell_price     DECIMAL(10) 
+reorder_lvl    INT        
+quantity       INT        
+supplier_id    INT
+```
 
 ```
 UPDATE products
@@ -172,7 +286,20 @@ WHERE product_name LIKE '%Detergent%';
 
 
 **Question 10**
-<img width="952" height="289" alt="image" src="https://github.com/user-attachments/assets/110d35f9-9380-4776-b22d-a4201e96c3f3" />
+```
+Write a SQL query to display hire dates in the format "DD-MM-YYYY" from the emp table
+
+cid         name        type        
+----------  ----------  ---------- 
+0           empno       INT         
+1           ename       VARCHAR(100)
+2           job         VARCHAR(50)
+3           mgr         INT        
+4           hiredate    DATE        
+5           sal         DECIMAL(10,2)  
+6           comm        DECIMAL(10,2)  
+7           deptno      INT
+```
 
 ```
 SELECT ename,strftime('%d-%m-%Y',hiredate) AS HireDateFormatted
