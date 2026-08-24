@@ -37,124 +37,145 @@ HAVING condition;
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+<img width="880" height="260" alt="image" src="https://github.com/user-attachments/assets/672e21e6-8374-43fc-b2aa-41d18897a508" />
 
-```sql
--- Paste your SQL code below for Question 1
+```
+SELECT COUNT(*) AS employees_count from employee
+where income>50000;
 ```
 
 **Output:**
+<img width="958" height="400" alt="image" src="https://github.com/user-attachments/assets/42c8beb3-a9f9-49ac-9b55-c9da5040b5fb" />
 
-![Output1](output.png)
+
 
 **Question 2**
----
--- Paste Question 2 here
+<img width="730" height="264" alt="image" src="https://github.com/user-attachments/assets/9597693c-4b69-47e3-890b-f854f241499e" />
 
-```sql
--- Paste your SQL code below for Question 2
+```
+select name,LENGTH(name) as length from customer
+order by LENGTH(name) DESC
+LIMIT 1;
 ```
 
 **Output:**
+<img width="1002" height="370" alt="image" src="https://github.com/user-attachments/assets/0cd86782-8b93-49dc-88f4-e5eceea658af" />
 
-![Output2](output.png)
+
 
 **Question 3**
----
--- Paste Question 3 here
+<img width="1095" height="271" alt="image" src="https://github.com/user-attachments/assets/fa917af3-3e2b-4a6d-b11d-dfb940ade193" />
 
-```sql
--- Paste your SQL code below for Question 3
+```
+select MAX(age)-MIN(age) AS age_difference
+from employee;
 ```
 
 **Output:**
+<img width="1264" height="521" alt="image" src="https://github.com/user-attachments/assets/748e0e02-b053-43a5-9036-99998ed1664c" />
 
-![Output3](output.png)
+
 
 **Question 4**
----
--- Paste Question 4 here
+<img width="1104" height="259" alt="image" src="https://github.com/user-attachments/assets/1a3e66a9-c9b8-4ffb-86c8-3c560be70326" />
 
-```sql
--- Paste your SQL code below for Question 4
+```
+select DoctorID,COUNT(*) as TotalAppointments from Appointments
+GROUP BY DoctorID;
 ```
 
 **Output:**
+<img width="1181" height="718" alt="image" src="https://github.com/user-attachments/assets/ae725a14-6d89-4818-af85-7252742ff001" />
 
-![Output4](output.png)
+
 
 **Question 5**
----
--- Paste Question 5 here
+<img width="1094" height="226" alt="image" src="https://github.com/user-attachments/assets/f22f136c-916b-47ea-b6c7-5f5ec39039a1" />
 
-```sql
--- Paste your SQL code below for Question 5
+```
+select DoctorID,COUNT(*) as TotalPrescriptions from Prescriptions 
+Group by DoctorID;
 ```
 
 **Output:**
+<img width="1143" height="814" alt="image" src="https://github.com/user-attachments/assets/2277eaaf-b6df-4bfb-802f-ca75ccd20779" />
 
-![Output5](output.png)
+
 
 **Question 6**
----
--- Paste Question 6 here
+<img width="1061" height="243" alt="image" src="https://github.com/user-attachments/assets/6346fddd-b98c-429c-a11a-2299e4f4ad21" />
 
-```sql
--- Paste your SQL code below for Question 6
+```
+select Diagnosis,COUNT(*) as DiagnosisCount from MedicalRecords
+group by Diagnosis
+order by DiagnosisCount desc
+limit 1;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1172" height="399" alt="image" src="https://github.com/user-attachments/assets/906def77-76d4-4da7-965f-5df27eeb9adc" />
+
+
 
 **Question 7**
----
--- Paste Question 7 here
+<img width="1220" height="297" alt="image" src="https://github.com/user-attachments/assets/7c7e115e-3533-4ff8-9238-b57dd229fc43" />
 
-```sql
--- Paste your SQL code below for Question 7
+```
+select age,MIN(Income) as Income from employee 
+group by age
+having MIN(Income)<1000000;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1028" height="502" alt="image" src="https://github.com/user-attachments/assets/d53295c5-40db-4100-a126-809bd25fa0b8" />
+
+
 
 **Question 8**
----
--- Paste Question 8 here
+<img width="1239" height="268" alt="image" src="https://github.com/user-attachments/assets/710b4f84-3c76-4fc0-be52-4be7efb2915d" />
 
-```sql
--- Paste your SQL code below for Question 8
+```
+select (age/5)*5 as age_group,MIN(age) from customer1
+group by (age/5)*5
+having MIN(age)<25;
 ```
 
 **Output:**
+<img width="925" height="389" alt="image" src="https://github.com/user-attachments/assets/c3f12e03-5609-417e-afd7-a9d36cc0edfe" />
 
-![Output8](output.png)
+
 
 **Question 9**
----
--- Paste Question 9 here
+<img width="1240" height="285" alt="image" src="https://github.com/user-attachments/assets/3a54280f-fe11-411a-a259-a234a95da71d" />
 
-```sql
--- Paste your SQL code below for Question 9
+```
+select city,SUM(income) as Income from employee
+group by city
+having SUM(income)>200000;
 ```
 
 **Output:**
+<img width="1003" height="598" alt="image" src="https://github.com/user-attachments/assets/dcca448d-93cf-4386-bf9d-8c6bacba7567" />
 
-![Output9](output.png)
+
 
 **Question 10**
----
--- Paste Question 10 here
+<img width="1029" height="237" alt="image" src="https://github.com/user-attachments/assets/4e309ecf-303f-4efe-ac7f-ed51735d177d" />
 
-```sql
--- Paste your SQL code below for Question 10
 ```
-
+select address,AVG(salary) from customer1
+group by address
+having AVG(salary)<15000;
+```
 **Output:**
 
-![Output10](output.png)
+<img width="1089" height="670" alt="image" src="https://github.com/user-attachments/assets/52434156-e804-4e40-b15e-23584ab20802" />
+
+
+<img width="1917" height="959" alt="Screenshot 2026-08-24 091208" src="https://github.com/user-attachments/assets/95b3c611-36bb-4720-b8c8-2cd053b420aa" />
+
 
 
 ## RESULT
